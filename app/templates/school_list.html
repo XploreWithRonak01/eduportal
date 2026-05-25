@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}School List | School Admission Portal 2026{% endblock %}
+
+{% block content %}
+
+<main class="pb-12">
+    <div class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+            <div class="flex items-center text-sm" style="color: #b4b6b7;">
+                <a href="{% url 'home' %}" class="hover:text-[#168e6a] transition">Home</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <span class="text-[#292d32] font-medium">Schools</span>
+            </div>
+        </div>
+    </div>
+    <section class="bg-gradient-to-br from-[#f8fafc] to-[#f0f4f8] border-b border-[rgba(22,142,106,0.1)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4" style="color: #292d32;">Find Your Perfect School</h1>
+            <form method="GET" class="flex flex-col md:flex-row gap-3">
+                <div class="flex-grow relative">
+                    <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2" style="color: #b4b6b7;"></i>
+                    <input type="text" name="q" value="{{ request.GET.q }}" autocomplete="off"
+                        placeholder="Search by city or school name..."
+                        class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-gray-200 text-lg bg-white text-[#292d32] focus:border-[#168e6a] focus:outline-none transition">
+                </div>
+                <div>
+                    <button type="submit"
+                        class="bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] text-white font-semibold px-6 py-4 rounded-full transition-all duration-300 shadow-[0_8px_20px_-6px_rgba(22,142,106,0.3)]">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for school in school %}
+            <div
+                class="school-card rounded-2xl overflow-hidden bg-white border border-gray-200 hover:border-[#168e6a] hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+                <div class="h-48 relative overflow-hidden">
+                    <img src="{{ school.primary_image.url }}" class="w-full h-full object-cover" alt="{{ school.name }}">
+
+                    <div class="absolute top-3 left-3">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white shadow-sm text-[#168e6a]">
+                            {{ school.board }}
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3 gap-3">
+                        <h3 class="font-bold text-xl text-[#292d32] leading-snug">
+                            {{ school.school_name }}
+                        </h3>
+                    </div>
+                    <p class="flex items-center text-sm mb-3 text-[#b4b6b7]">
+                        <i class="fas fa-map-pin mr-2 text-sm text-[#168e6a]"></i>
+                        {{ school.city }}, {{ school.state }}
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-[#168e6a10] text-[#168e6a]">
+                            {{ school.school_type }}
+                        </span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-[#fbb03b10] text-[#fbb03b]">
+                            {{ school.medium }}
+                        </span>
+                        {% with school.facilities.first as facility %}
+                        {% if facility %}
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-[#b4b6b710] text-[#292d32]">
+                            {{ facility.facility_name }}
+                        </span>
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-full bg-[#168e6a10] flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-sm text-[#168e6a]"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs block text-[#b4b6b7]">Established</span>
+                                <span class="font-bold text-lg text-[#292d32]">{{ school.established_year }}</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'school_detail' school.slug %}"
+                            class="inline-flex items-center whitespace-nowrap px-5 py-2.5 text-sm rounded-full font-semibold border-2 border-[#168e6a] text-[#168e6a] transition-all duration-300 hover:bg-[#168e6a] hover:text-white">
+                            View Details
+                            <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+{% endblock %}

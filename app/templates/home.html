@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="py-16 md:py-24 bg-gradient-to-br from-[#fafbfc] to-[#f0f4f8]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <div class="inline-block mb-4 px-4 py-2 rounded-full bg-[#fbb03b]/15 text-[#168e6a] font-semibold text-sm">
+            <i class="fas fa-star mr-2 text-[#fbb03b]"></i>Admissions Open 2026-27
+        </div>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 text-[#292d32]">
+            School Admission<br>
+            <span class="bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] bg-clip-text text-transparent">Portal
+                2026</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-3 font-semibold text-[#168e6a]">Find Your Perfect School. Apply Online.
+            Track Easily.</p>
+        <p class="text-lg max-w-3xl mx-auto text-[#b4b6b7]">An admission platform helping students and parents explore
+            schools and apply to CBSE, RBSE & ICSE schools across major cities in Rajasthan.</p>
+    </div>
+</section>
+<section class="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 relative z-10 mb-16">
+    <div class="p-6 md:p-8 rounded-3xl shadow-2xl bg-white border border-[#168e6a]/10">
+        <form action="{% url 'school_list' %}" method="GET">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow relative">
+                    <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-[#b4b6b7]"></i>
+                    <input type="text" name="q" placeholder="Search by city or school name..."
+                        class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-gray-200 focus:border-[#168e6a] focus:outline-none transition text-lg text-[#292d32]">
+                </div>
+                <button type="submit"
+                    class="bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-[#168e6a]/30 hover:shadow-xl hover:shadow-[#168e6a]/40 hover:-translate-y-0.5 transition-all duration-300">
+                    <i class="fas fa-search mr-2"></i> Search
+                </button>
+
+            </div>
+        </form>
+        <div class="flex flex-wrap items-center gap-3 mt-6">
+            <span class="font-medium text-[#292d32]">Popular:</span>
+            <a href="{% url 'school_list' %}?q=Udaipur"
+                class="bg-[#b4b6b7]/10 border border-[#b4b6b7]/20 text-[#292d32] px-5 py-2 rounded-full font-medium hover:bg-[#168e6a] hover:text-white hover:border-[#168e6a] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#168e6a]/30 transition-all duration-300 text-sm">
+                <i class="fas fa-city mr-1 text-xs"></i>Udaipur
+            </a>
+            <a href="{% url 'school_list' %}?q=Jaipur"
+                class="bg-[#b4b6b7]/10 border border-[#b4b6b7]/20 text-[#292d32] px-5 py-2 rounded-full font-medium hover:bg-[#168e6a] hover:text-white hover:border-[#168e6a] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#168e6a]/30 transition-all duration-300 text-sm">
+                <i class="fas fa-city mr-1 text-xs"></i>Jaipur
+            </a>
+            <a href="{% url 'school_list' %}?q=Jodhpur"
+                class="bg-[#b4b6b7]/10 border border-[#b4b6b7]/20 text-[#292d32] px-5 py-2 rounded-full font-medium hover:bg-[#168e6a] hover:text-white hover:border-[#168e6a] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#168e6a]/30 transition-all duration-300 text-sm">
+                <i class="fas fa-city mr-1 text-xs"></i>Jodhpur
+            </a>
+            <a href="{% url 'school_list' %}?q=Kota"
+                class="bg-[#b4b6b7]/10 border border-[#b4b6b7]/20 text-[#292d32] px-5 py-2 rounded-full font-medium hover:bg-[#168e6a] hover:text-white hover:border-[#168e6a] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#168e6a]/30 transition-all duration-300 text-sm">
+                <i class="fas fa-city mr-1 text-xs"></i>Kota
+            </a>
+            <a href="{% url 'school_list' %}?q=Ajmer"
+                class="bg-[#b4b6b7]/10 border border-[#b4b6b7]/20 text-[#292d32] px-5 py-2 rounded-full font-medium hover:bg-[#168e6a] hover:text-white hover:border-[#168e6a] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#168e6a]/30 transition-all duration-300 text-sm">
+                <i class="fas fa-city mr-1 text-xs"></i>Ajmer
+            </a>
+        </div>
+    </div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[#292d32]">
+            Featured Schools
+        </h2>
+        <div class="w-24 h-1 mx-auto rounded-full mb-4 bg-gradient-to-r from-[#168e6a] to-[#fbb03b]"></div>
+        <p class="text-lg text-[#b4b6b7]">
+            Top-rated institutions reviewed by the Edu Portal team
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for school in featured_schools %}
+        <div
+            class="school-card rounded-2xl overflow-hidden bg-white border border-gray-200 hover:border-[#168e6a] hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <div class="h-48 relative overflow-hidden">
+                <img src="{{ school.primary_image.url }}" class="w-full h-full object-cover"
+                    alt="{{ school.school_name }}">
+                <div class="absolute top-3 left-3">
+                    <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white shadow-sm text-[#168e6a]">
+                        {{ school.board }}
+                    </span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="font-bold text-xl text-[#292d32] leading-snug mb-3">
+                    {{ school.school_name }}
+                </h3>
+                <p class="flex items-center text-sm mb-3 text-[#b4b6b7]">
+                    <i class="fas fa-map-pin mr-2 text-sm text-[#168e6a]"></i>
+                    {{ school.city }}, {{ school.state }}
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-[#168e6a10] text-[#168e6a]">
+                        {{ school.get_school_type_display }}
+                    </span>
+                    <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-[#fbb03b10] text-[#fbb03b]">
+                        {{ school.get_medium_display }}
+                    </span>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                    <div>
+                        <span class="text-xs block text-[#b4b6b7]">
+                            Established
+                        </span>
+                        <span class="font-bold text-lg text-[#292d32]">
+                            {{ school.established_year }}
+                        </span>
+                    </div>
+                    <a href="{% url 'school_detail' school.slug %}"
+                        class="inline-flex items-center whitespace-nowrap px-5 py-2.5 text-sm rounded-full font-semibold border-2 border-[#168e6a] text-[#168e6a] transition-all duration-300 hover:bg-[#168e6a] hover:text-white">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[#292d32]">Why Choose This Portal?</h2>
+            <div class="w-24 h-1 mx-auto rounded-full mb-4 bg-gradient-to-r from-[#168e6a] to-[#fbb03b]"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+                class="p-8 rounded-3xl text-center border border-[#b4b6b7]/15 hover:bg-gradient-to-br hover:from-white hover:to-[#f8fdfa] hover:border-[#168e6a] hover:shadow-xl hover:shadow-[#168e6a]/10 transition-all duration-300">
+                <div
+                    class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl bg-gradient-to-br from-[#168e6a]/10 to-[#168e6a]/5 text-[#168e6a]">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-[#292d32]">Verified Schools</h3>
+                <p class="text-[#b4b6b7]">All listed schools are government-recognized & regularly audited.</p>
+            </div>
+            <div
+                class="p-8 rounded-3xl text-center border border-[#b4b6b7]/15 hover:bg-gradient-to-br hover:from-white hover:to-[#f8fdfa] hover:border-[#168e6a] hover:shadow-xl hover:shadow-[#168e6a]/10 transition-all duration-300">
+                <div
+                    class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl bg-gradient-to-br from-[#fbb03b]/10 to-[#fbb03b]/5 text-[#fbb03b]">
+                    <i class="fas fa-map-signs"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-[#292d32]">Easy Tracking</h3>
+                <p class="text-[#b4b6b7]">Real-time application status with your unique tracking ID.</p>
+            </div>
+            <div
+                class="p-8 rounded-3xl text-center border border-[#b4b6b7]/15 hover:bg-gradient-to-br hover:from-white hover:to-[#f8fdfa] hover:border-[#168e6a] hover:shadow-xl hover:shadow-[#168e6a]/10 transition-all duration-300">
+                <div
+                    class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl bg-gradient-to-br from-[#168e6a]/10 to-[#168e6a]/5 text-[#168e6a]">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-[#292d32]">Free Application</h3>
+                <p class="text-[#b4b6b7]">Zero platform fees. Apply to multiple schools at no cost.</p>
+            </div>
+            <div
+                class="p-8 rounded-3xl text-center border border-[#b4b6b7]/15 hover:bg-gradient-to-br hover:from-white hover:to-[#f8fdfa] hover:border-[#168e6a] hover:shadow-xl hover:shadow-[#168e6a]/10 transition-all duration-300">
+                <div
+                    class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl bg-gradient-to-br from-[#fbb03b]/10 to-[#fbb03b]/5 text-[#fbb03b]">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3 text-[#292d32]">24/7 Support</h3>
+                <p class="text-[#b4b6b7]">Dedicated helpline & chat support for parents & students.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[#292d32]">How It Works</h2>
+        <div class="w-24 h-1 mx-auto rounded-full mb-4 bg-gradient-to-r from-[#168e6a] to-[#fbb03b]"></div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 lg:gap-16">
+        <div class="flex flex-col items-center text-center max-w-xs">
+            <div
+                class="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center text-2xl font-bold text-white bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] shadow-lg shadow-[#168e6a]/30 mb-6">
+                1</div>
+            <i class="fas fa-search text-4xl mb-4 text-[#168e6a]"></i>
+            <h3 class="font-bold text-2xl mb-2 text-[#292d32]">Search School</h3>
+            <p class="text-[#b4b6b7]">Filter by city, board, or name. Compare profiles.</p>
+        </div>
+        <div class="hidden md:block text-5xl text-[#b4b6b7]">→</div>
+        <div class="flex flex-col items-center text-center max-w-xs">
+            <div
+                class="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center text-2xl font-bold text-white bg-gradient-to-br from-[#fbb03b] to-[#e8960a] shadow-lg shadow-[#fbb03b]/30 mb-6">
+                2</div>
+            <i class="fas fa-pen-to-square text-4xl mb-4 text-[#fbb03b]"></i>
+            <h3 class="font-bold text-2xl mb-2 text-[#292d32]">Fill Online Form</h3>
+            <p class="text-[#b4b6b7]">Secure, simple application. Upload documents once.</p>
+        </div>
+        <div class="hidden md:block text-5xl text-[#b4b6b7]">→</div>
+        <div class="flex flex-col items-center text-center max-w-xs">
+            <div
+                class="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center text-2xl font-bold text-white bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] shadow-lg shadow-[#168e6a]/30 mb-6">
+                3</div>
+            <i class="fas fa-chart-line text-4xl mb-4 text-[#168e6a]"></i>
+            <h3 class="font-bold text-2xl mb-2 text-[#292d32]">Track Status</h3>
+            <p class="text-[#b4b6b7]">Get updates via SMS/email. Know your merit position.</p>
+        </div>
+    </div>
+</section>
+<section class="py-20 bg-gradient-to-br from-[#fafbfc] via-white to-[#f0f4f8] relative overflow-hidden">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-[#168e6a]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-[#fbb03b]/5 rounded-full blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#292d32] mb-4">
+                Important Admission Info
+            </h2>
+            <div class="w-28 h-1.5 mx-auto bg-gradient-to-r from-[#168e6a] to-[#fbb03b] rounded-full mb-6"></div>
+            <p class="text-lg text-[#b4b6b7] max-w-2xl mx-auto">
+                Key guidelines you should know before applying to schools
+            </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+            <div
+                class="group bg-white rounded-3xl p-8 border border-[#b4b6b7]/15 hover:-translate-y-3 hover:shadow-2xl hover:shadow-[#168e6a]/15 hover:border-[#168e6a]/30 transition-all duration-500 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#168e6a]/5 to-transparent rounded-bl-full">
+                </div>
+                <div class="relative z-10">
+                    <div
+                        class="w-[70px] h-[70px] rounded-2xl flex items-center justify-center text-3xl bg-gradient-to-br from-[#168e6a]/10 to-[#168e6a]/5 text-[#168e6a] group-hover:scale-110 transition-transform duration-300 mb-6 shadow-lg shadow-[#168e6a]/10">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#292d32] group-hover:text-[#168e6a] transition-colors">
+                        Documents Required
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed mb-4">
+                        Basic documents like birth certificate, ID proof, and previous marksheet are needed.
+                    </p>
+                    <ul class="space-y-2 text-sm text-[#292d32]">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#168e6a] mr-2 text-xs"></i>
+                            Birth Certificate
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#168e6a] mr-2 text-xs"></i>
+                            Previous Marksheet
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#168e6a] mr-2 text-xs"></i>
+                            ID Proof
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="group bg-white rounded-3xl p-8 border border-[#b4b6b7]/15 hover:-translate-y-3 hover:shadow-2xl hover:shadow-[#fbb03b]/15 hover:border-[#fbb03b]/30 transition-all duration-500 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#fbb03b]/5 to-transparent rounded-bl-full">
+                </div>
+                <div class="relative z-10">
+                    <div
+                        class="w-[70px] h-[70px] rounded-2xl flex items-center justify-center text-3xl bg-gradient-to-br from-[#fbb03b]/10 to-[#fbb03b]/5 text-[#fbb03b] group-hover:scale-110 transition-transform duration-300 mb-6 shadow-lg shadow-[#fbb03b]/10">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#292d32] group-hover:text-[#fbb03b] transition-colors">
+                        Eligibility
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed mb-4">
+                        Admission depends on class availability and school-specific criteria.
+                    </p>
+                    <ul class="space-y-2 text-sm text-[#292d32]">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#fbb03b] mr-2 text-xs"></i>
+                            Age Criteria
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#fbb03b] mr-2 text-xs"></i>
+                            Seat Availability
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#fbb03b] mr-2 text-xs"></i>
+                            School-specific Rules
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="group bg-white rounded-3xl p-8 border border-[#b4b6b7]/15 hover:-translate-y-3 hover:shadow-2xl hover:shadow-[#168e6a]/15 hover:border-[#168e6a]/30 transition-all duration-500 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#168e6a]/5 to-transparent rounded-bl-full">
+                </div>
+                <div class="relative z-10">
+                    <div
+                        class="w-[70px] h-[70px] rounded-2xl flex items-center justify-center text-3xl bg-gradient-to-br from-[#168e6a]/10 to-[#168e6a]/5 text-[#168e6a] group-hover:scale-110 transition-transform duration-300 mb-6 shadow-lg shadow-[#168e6a]/10">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#292d32] group-hover:text-[#168e6a] transition-colors">
+                        Admission Updates
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed mb-4">
+                        Each school updates admission dates individually on their official profile.
+                    </p>
+                    <ul class="space-y-2 text-sm text-[#292d32]">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#168e6a] mr-2 text-xs"></i>
+                            Real-time Notifications
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#168e6a] mr-2 text-xs"></i>
+                            SMS & Email Alerts
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-[#168e6a] mr-2 text-xs"></i>
+                            Track on Dashboard
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-14">
+            <a href="{% url 'school_list' %}"
+                class="inline-flex items-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] shadow-lg shadow-[#168e6a]/30 hover:shadow-xl hover:shadow-[#168e6a]/40 hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fas fa-arrow-right mr-2"></i> Start Your Application
+            </a>
+        </div>
+    </div>
+</section>
+<section class="py-20 bg-white relative overflow-hidden">
+    <div class="absolute top-20 right-0 w-72 h-72 bg-[#168e6a]/3 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-0 w-72 h-72 bg-[#fbb03b]/3 rounded-full blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#292d32] mb-4">
+                Quick Help
+            </h2>
+            <div class="w-28 h-1.5 mx-auto bg-gradient-to-r from-[#168e6a] to-[#fbb03b] rounded-full mb-6"></div>
+            <p class="text-lg text-[#b4b6b7] max-w-2xl mx-auto">
+                Common questions parents usually ask before applying
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <div
+                class="group bg-gradient-to-br from-white to-[#fafbfc] rounded-3xl p-7 border border-[#b4b6b7]/15 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#168e6a]/10 hover:border-[#168e6a]/30 transition-all duration-500 flex gap-5">
+                <div class="flex-shrink-0">
+                    <div
+                        class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl bg-gradient-to-br from-[#168e6a]/10 to-[#168e6a]/5 text-[#168e6a] group-hover:bg-gradient-to-br group-hover:from-[#168e6a] group-hover:to-[#0f6b4f] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#168e6a]/30 transition-all duration-500">
+                        <i class="fas fa-pen-to-square"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-3 text-[#292d32] group-hover:text-[#168e6a] transition-colors">
+                        How do I apply?
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed">
+                        Select a school, fill the form, upload documents and submit online. It's quick and paperless.
+                    </p>
+                </div>
+            </div>
+            <div
+                class="group bg-gradient-to-br from-white to-[#fafbfc] rounded-3xl p-7 border border-[#b4b6b7]/15 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#fbb03b]/10 hover:border-[#fbb03b]/30 transition-all duration-500 flex gap-5">
+                <div class="flex-shrink-0">
+                    <div
+                        class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl bg-gradient-to-br from-[#fbb03b]/10 to-[#fbb03b]/5 text-[#fbb03b] group-hover:bg-gradient-to-br group-hover:from-[#fbb03b] group-hover:to-[#e8960a] group-hover:text-[#292d32] group-hover:shadow-lg group-hover:shadow-[#fbb03b]/30 transition-all duration-500">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-3 text-[#292d32] group-hover:text-[#fbb03b] transition-colors">
+                        Is admission free?
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed">
+                        Yes, applying through the portal is free for most listed schools. No hidden charges.
+                    </p>
+                </div>
+            </div>
+            <div
+                class="group bg-gradient-to-br from-white to-[#fafbfc] rounded-3xl p-7 border border-[#b4b6b7]/15 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#fbb03b]/10 hover:border-[#fbb03b]/30 transition-all duration-500 flex gap-5">
+                <div class="flex-shrink-0">
+                    <div
+                        class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl bg-gradient-to-br from-[#fbb03b]/10 to-[#fbb03b]/5 text-[#fbb03b] group-hover:bg-gradient-to-br group-hover:from-[#fbb03b] group-hover:to-[#e8960a] group-hover:text-[#292d32] group-hover:shadow-lg group-hover:shadow-[#fbb03b]/30 transition-all duration-500">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-3 text-[#292d32] group-hover:text-[#fbb03b] transition-colors">
+                        Can I apply to multiple schools?
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed">
+                        Yes, you can apply to multiple schools from a single account. Compare and choose the best fit.
+                    </p>
+                </div>
+            </div>
+            <div
+                class="group bg-gradient-to-br from-white to-[#fafbfc] rounded-3xl p-7 border border-[#b4b6b7]/15 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#168e6a]/10 hover:border-[#168e6a]/30 transition-all duration-500 flex gap-5">
+                <div class="flex-shrink-0">
+                    <div
+                        class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl bg-gradient-to-br from-[#168e6a]/10 to-[#168e6a]/5 text-[#168e6a] group-hover:bg-gradient-to-br group-hover:from-[#168e6a] group-hover:to-[#0f6b4f] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#168e6a]/30 transition-all duration-500">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-3 text-[#292d32] group-hover:text-[#168e6a] transition-colors">
+                        How will I get updates?
+                    </h3>
+                    <p class="text-[#b4b6b7] leading-relaxed">
+                        You will get real-time status updates on your dashboard, plus SMS and email notifications.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-14">
+            <p class="text-[#b4b6b7] mb-4">Still have questions? We're here to help!</p>
+            <a href="{% url 'contact' %}"
+                class="inline-flex items-center px-8 py-4 rounded-full font-semibold text-[#168e6a] bg-[#168e6a]/10 hover:bg-gradient-to-br hover:from-[#168e6a] hover:to-[#0f6b4f] hover:text-white hover:shadow-lg hover:shadow-[#168e6a]/30 hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fas fa-headset mr-2"></i> Contact Support
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

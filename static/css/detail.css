@@ -1,0 +1,21 @@
+.info-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(180, 182, 183, 0.2);
+}
+
+.info-card:hover {
+    border-color: #168e6a;
+    box-shadow: 0 10px 25px -10px rgba(22, 142, 106, 0.1);
+}
+
+.facility-badge {
+    background: rgba(22, 142, 106, 0.05);
+    color: #168e6a;
+    border: 1px solid rgba(22, 142, 106, 0.1);
+    transition: all 0.3s ease;
+}
+
+.facility-badge:hover {
+    background: #168e6a;
+    color: white;
+}

@@ -1,0 +1,25 @@
+.step-active {
+    background: linear-gradient(135deg, #168e6a, #0f6b4f);
+    color: white;
+}
+
+.step-completed {
+    background: #168e6a;
+    color: white;
+}
+
+.form-input {
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #168e6a;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(22, 142, 106, 0.1);
+}
+
+.form-label {
+    color: #292d32;
+    font-weight: 500;
+}

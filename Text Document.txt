@@ -1,0 +1,91 @@
+class School(models.Model):
+    school_name
+    slug
+    city
+    state
+    board
+    established_year
+    main_image
+    description
+    address
+    full_address
+    classes
+    medium
+    student_teacher_ratio
+    campus_size
+    affiliation_number
+    available_seats
+    total_seats
+    last_date
+    phone
+    email
+    website
+    monday_friday
+    saturday
+    sunday
+    visiting_hours
+
+class School_Gallery(models.Model):
+    school (ForeignKey -> School)
+    image
+
+class SchoolFacility(models.Model):
+    school (ForeignKey -> School)
+    name
+
+class School_Document(models.Model):
+    school (ForeignKey -> School)
+    name
+
+class Form_Application(models.Model):
+
+# Student Information
+full_name
+date_of_birth
+gender
+blood_group
+nationality
+aadhar_number
+religion
+category
+
+address
+city
+state
+pin_code
+
+applied_class
+
+# Previous School Details
+previous_school_name
+previous_board
+last_class_attended
+year_of_passing
+
+# Parent / Guardian
+father_name
+father_occupation
+father_mobile
+father_email
+father_income
+
+mother_name
+mother_occupation
+mother_mobile
+mother_email
+
+# System Fields
+status (pending / submitted / approved)
+created_at
+declaration_confirmed ✔ (Application truth statement)
+
+class Upload_Documents Fields(models.Model):
+birth_certificate
+transfer_certificate
+previous_report_card
+aadhar_card
+student_photo
+caste_certificate
+review_declaration_confirmed ✔ (File authenticity statement)
+created_at
+updated_at

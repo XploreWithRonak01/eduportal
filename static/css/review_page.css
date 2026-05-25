@@ -1,0 +1,27 @@
+.step-active {
+    background: linear-gradient(135deg, #168e6a, #0f6b4f);
+    color: white;
+}
+
+.step-completed {
+    background: #168e6a;
+    color: white;
+}
+
+.review-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(180, 182, 183, 0.2);
+}
+
+.review-card:hover {
+    border-color: #168e6a;
+    box-shadow: 0 5px 15px -5px rgba(22, 142, 106, 0.1);
+}
+
+.doc-status-success {
+    color: #168e6a;
+}
+
+.doc-status-pending {
+    color: #fbb03b;
+}

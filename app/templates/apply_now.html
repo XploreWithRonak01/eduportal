@@ -1,0 +1,380 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Apply Now | School Admission Portal 2026{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/apply_now.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="pb-12">
+    <div class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+            <div class="flex items-center text-sm" style="color: #b4b6b7;">
+                <a href="{% url 'home' %}" class="hover:text-[#168e6a] transition">Home</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <a href="{% url 'school_list' %}" class="hover:text-[#168e6a] transition">Schools</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <a href="{% url 'school_detail' school.slug %}" class="hover:text-[#168e6a] transition">
+                    {{ school.school_name }}
+                </a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <span class="text-[#292d32] font-medium">Apply Now</span>
+            </div>
+        </div>
+    </div>
+    <section class="bg-gradient-to-br from-[#f8fafc] to-[#f0f4f8] border-b border-[rgba(22,142,106,0.1)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2" style="color: #292d32;">Apply Now</h1>
+            <p class="text-lg" style="color: #b4b6b7;">{{ school.school_name }}, {{ school.city }} - Admission Form
+                2026-27</p>
+        </div>
+    </section>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center flex-1">
+                <div class="step-active w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                <div class="flex-1 h-1 mx-2 bg-gray-200"></div>
+            </div>
+            <div class="flex items-center flex-1">
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center font-bold bg-gray-200 text-gray-500">
+                    2</div>
+                <div class="flex-1 h-1 mx-2 bg-gray-200"></div>
+            </div>
+            <div class="flex items-center">
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center font-bold bg-gray-200 text-gray-500">
+                    3</div>
+            </div>
+        </div>
+        <div class="flex justify-between text-sm px-2 mb-8">
+            <span class="font-semibold" style="color: #168e6a;">Student Details</span>
+            <span style="color: #b4b6b7;">Review</span>
+            <span style="color: #b4b6b7;">Confirmation</span>
+        </div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-8">
+            <div class="bg-gradient-to-r from-[#168e6a08] to-[#fbb03b08] p-4 rounded-2xl mb-8 border border-gray-100">
+                <div class="flex items-center gap-4">
+                    <img src="{{ school.primary_image.url }}" class="w-16 h-16 rounded-xl object-cover" alt="{{ school.name }}">
+                    <div>
+                        <h3 class="font-bold text-lg" style="color: #292d32;">{{school.school_name}}, {{school.city}}
+                        </h3>
+                        <p class="text-sm" style="color: #b4b6b7;">{{ school.board }} | {{ school.school_type }} | Est.
+                            {{ school.established_year }}</p>
+                    </div>
+                </div>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+
+                 {% if error %}
+                    <div class="bg-red-100 text-red-600 px-4 py-3 rounded-lg mb-4">
+                    {{ error }}
+                    </div>
+                {% endif %}
+                <h3 class="font-bold text-xl mb-6 flex items-center" style="color: #292d32;">
+                    <i class="fas fa-user-graduate mr-3" style="color: #168e6a;"></i>Student Information
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label class="form-label block mb-2">Full Name <span class="text-red-500"></span></label>
+                        <input type="text" name="student_name" required value="{{ data.student_name }}"
+                            placeholder="Enter student's full name"
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">Date of Birth <span class="text-red-500"></span></label>
+                        <input type="date" name="date_of_birth" required value="{{ data.date_of_birth }}"
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">Gender <span class="text-red-500"></span></label>
+                        <select name="gender" required class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            <option value="">Select Gender</option>
+                            <option value="Male" {% if data.gender == 'Male' %}selected{% endif %}>
+                                Male</option>
+                            <option value="Female" {% if data.gender == 'Female' %}selected{% endif %}>
+                                Female</option>
+                            <option value="Other" {% if data.gender == 'Other' %}selected{% endif %}>
+                                Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">Blood Group</label>
+                        <select name="blood_group" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            <option value="">Select Blood Group</option>
+                            <option value="A+" {% if data.blood_group == 'A+' %}selected{% endif %}>
+                                A+</option>
+                            <option value="A-" {% if data.blood_group == 'A-' %}selected{% endif %}>
+                                A-</option>
+                            <option value="B+" {% if data.blood_group == 'B+' %}selected{% endif %}>
+                                B+</option>
+                            <option value="B-" {% if data.blood_group == 'B-' %}selected{% endif %}>
+                                B-</option>
+                            <option value="O+" {% if data.blood_group == 'O+' %}selected{% endif %}>
+                                O+</option>
+                            <option value="O-" {% if data.blood_group == 'O-' %}selected{% endif %}>
+                                O-</option>
+                            <option value="AB+" {% if data.blood_group == 'AB+' %}selected{% endif %}>
+                                AB+</option>
+                            <option value="AB-" {% if data.blood_group == 'AB-' %}selected{% endif %}>
+                                AB-</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">Aadhar Number</label>
+                        <input type="text" name="aadhar_number" value="{{ data.aadhar_number }}"
+                            placeholder="XXXX XXXX XXXX" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">Religion</label>
+                        <select name="religion" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            <option value="">Select Religion</option>
+                            <option value="Hindu" {% if data.religion == 'Hindu' %}selected{% endif %}>
+                                Hindu</option>
+                            <option value="Muslim" {% if data.religion == 'Muslim' %}selected{% endif %}>
+                                Muslim</option>
+                            <option value="Sikh" {% if data.religion == 'Sikh' %}selected{% endif %}>
+                                Sikh</option>
+                            <option value="Christian" {% if data.religion == 'Christian' %}selected{% endif %}>
+                                Christian</option>
+                            <option value="Jain" {% if data.religion == 'Jain' %}selected{% endif %}>
+                                Jain</option>
+                            <option value="Buddhist" {% if data.religion == 'Buddhist' %}selected{% endif %}>
+                                Buddhist</option>
+                            <option value="Other" {% if data.religion == 'Other' %}selected{% endif %}>
+                                Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">Category <span class="text-red-500"></span></label>
+                        <select name="cast_category" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            <option value="">Select Category</option>
+                            <option value="General" {% if data.cast_category == 'General' %}selected{% endif %}>
+                                General</option>
+                            <option value="OBC" {% if data.cast_category == 'OBC' %}selected{% endif %}>
+                                OBC</option>
+                            <option value="SC" {% if data.cast_category == 'SC' %}selected{% endif %}>
+                                SC</option>
+                            <option value="ST" {% if data.cast_category == 'ST' %}selected{% endif %}>
+                                ST</option>
+                            <option value="EWS" {% if data.cast_category == 'EWS' %}selected{% endif %}>
+                                EWS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="form-label block mb-2">Residential Address <span class="text-red-500"></span></label>
+                    <textarea name="address" rows="3"
+                        class="form-input w-full px-4 py-3 rounded-xl bg-white">{{ data.address }}</textarea>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div>
+                        <label class="form-label block mb-2">City <span class="text-red-500"></span></label>
+                        <input type="text" name="city" value="{{ data.city }}" placeholder="City"
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">State <span class="text-red-500"></span></label>
+                        <input type="text" name="state" value="{{ data.state }}" placeholder="State"
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="form-label block mb-2">PIN Code <span class="text-red-500"></span></label>
+                        <input type="text" name="pin_code" value="{{ data.pin_code }}" placeholder="PIN Code"
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="form-label block mb-2">Applying for Class <span class="text-red-500"></span></label>
+                    <select name="apply_class" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                        <option value="">Select Class</option>
+                        <option value="PLAYGROUP" {% if data.apply_class == 'PLAYGROUP' %}selected{% endif %}>
+                            Playgroup</option>
+                        <option value="NURSERY" {% if data.apply_class == 'NURSERY' %}selected{% endif %}>
+                            Nursery</option>
+                        <option value="LKG" {% if data.apply_class == 'LKG' %}selected{% endif %}>
+                            LKG</option>
+                        <option value="UKG" {% if data.apply_class == 'UKG' %}selected{% endif %}>
+                            UKG</option>
+                        <option value="PREP" {% if data.apply_class == 'PREP' %}selected{% endif %}>
+                            Prep</option>
+                        <option value="CLASS_1" {% if data.apply_class == 'CLASS_1' %}selected{% endif %}>
+                            Class 1</option>
+                        <option value="CLASS_2" {% if data.apply_class == 'CLASS_2' %}selected{% endif %}>
+                            Class 2</option>
+                        <option value="CLASS_3" {% if data.apply_class == 'CLASS_3' %}selected{% endif %}>
+                            Class 3</option>
+                        <option value="CLASS_4" {% if data.apply_class == 'CLASS_4' %}selected{% endif %}>
+                            Class 4</option>
+                        <option value="CLASS_5" {% if data.apply_class == 'CLASS_5' %}selected{% endif %}>
+                            Class 5</option>
+                        <option value="CLASS_6" {% if data.apply_class == 'CLASS_6' %}selected{% endif %}>
+                            Class 6</option>
+                        <option value="CLASS_7" {% if data.apply_class == 'CLASS_7' %}selected{% endif %}>
+                            Class 7</option>
+                        <option value="CLASS_8" {% if data.apply_class == 'CLASS_8' %}selected{% endif %}>
+                            Class 8</option>
+                        <option value="CLASS_9" {% if data.apply_class == 'CLASS_9' %}selected{% endif %}>
+                            Class 9</option>
+                        <option value="CLASS_10" {% if data.apply_class == 'CLASS_10' %}selected{% endif %}>
+                            Class 10</option>
+                        <option value="CLASS_11_SCIENCE" {% if data.apply_class == 'CLASS_11_SCIENCE' %}selected{% endif %}>
+                            Class 11 (Science)</option>
+                        <option value="CLASS_11_COMMERCE" {% if data.apply_class == 'CLASS_11_COMMERCE' %}selected{% endif %}>
+                            Class 11 (Commerce)</option>
+                        <option value="CLASS_11_HUMANITIES" {% if data.apply_class == 'CLASS_11_HUMANITIES' %}selected{% endif %}>
+                            Class 11 (Humanities)</option>
+                        <option value="CLASS_11_AGRICULTURE" {% if data.apply_class == 'CLASS_11_AGRICULTURE' %}selected{% endif %}>
+                            Class 11 (Agriculture)</option>
+                        <option value="CLASS_12_SCIENCE" {% if data.apply_class == 'CLASS_12_SCIENCE' %}selected{% endif %}>
+                            Class 12 (Science)</option>
+                        <option value="CLASS_12_COMMERCE" {% if data.apply_class == 'CLASS_12_COMMERCE' %}selected{% endif %}>
+                            Class 12 (Commerce)</option>
+                        <option value="CLASS_12_HUMANITIES" {% if data.apply_class == 'CLASS_12_HUMANITIES' %}selected{% endif %}>
+                            Class 12 (Humanities)</option>
+                        <option value="CLASS_12_AGRICULTURE" {% if data.apply_class == 'CLASS_12_AGRICULTURE' %}selected{% endif %}>
+                            Class 12 (Agriculture)</option>
+                    </select>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h4 class="font-bold text-lg mb-4" style="color: #292d32;">Previous School Details</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label block mb-2">School Name</label>
+                            <input type="text" name="previous_school_name" value="{{ data.previous_school_name }}"
+                                placeholder="Previous school name"
+                                class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Board</label>
+                            <select name="previous_board" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                                <option value="">Select Board</option>
+                                <option value="CBSE" {% if data.previous_board == 'CBSE' %}selected{% endif %}>
+                                    CBSE</option>
+                                <option value="ICSE" {% if data.previous_board == 'ICSE' %}selected{% endif %}>
+                                    ICSE</option>
+                                <option value="RBSE" {% if data.previous_board == 'RBSE' %}selected{% endif %}>
+                                    RBSE</option>
+                                <option value="Other" {% if data.previous_board == 'Other' %}selected{% endif %}>
+                                    Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Last Class Attended</label>
+                            <input type="text" name="last_class_attended" value="{{ data.last_class_attended }}"
+                                placeholder="e.g., Class 5" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Year of Passing</label>
+                            <input type="text" name="year_of_passing" value="{{ data.year_of_passing }}"
+                                placeholder="YYYY" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h3 class="font-bold text-xl mb-6 flex items-center" style="color: #292d32;">
+                        <i class="fas fa-users mr-3" style="color: #168e6a;"></i>Parent/Guardian Information
+                    </h3>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-md mb-3" style="color: #168e6a;">Father's Details</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="form-label block mb-2">Father's Name <span
+                                        class="text-red-500"></span></label>
+                                <input type="text" name="father_name" required value="{{ data.father_name }}"
+                                    placeholder="Full name" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div>
+                                <label class="form-label block mb-2">Occupation</label>
+                                <input type="text" name="father_occupation" value="{{ data.father_occupation }}"
+                                    placeholder="Occupation" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div>
+                                <label class="form-label block mb-2">Mobile Number <span
+                                        class="text-red-500"></span></label>
+                                <input type="tel" name="father_mobile" required value="{{ data.father_mobile }}"
+                                    placeholder="10-digit mobile number"
+                                    class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div>
+                                <label class="form-label block mb-2">Email</label>
+                                <input type="email" name="father_email" value="{{ data.father_email }}"
+                                    placeholder="Email address" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="form-label block mb-2">Annual Income</label>
+                                <select name="father_income" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                                    <option value="">Select Income Range</option>
+                                    <option value="Below ₹2 Lakhs" {% if data.father_income == 'Below ₹2 Lakhs' %}selected{% endif %}>
+                                        Below ₹2 Lakhs</option>
+                                    <option value="₹2 Lakhs - ₹5 Lakhs" {% if data.father_income == '₹2 Lakhs - ₹5 Lakhs' %}selected{% endif %}>
+                                        ₹2 Lakhs - ₹5 Lakhs</option>
+                                    <option value="₹5 Lakhs - ₹10 Lakhs" {% if data.father_income == '₹5 Lakhs - ₹10 Lakhs' %}selected{% endif %}>
+                                        ₹5 Lakhs - ₹10 Lakhs</option>
+                                    <option value="₹10 Lakhs - ₹15 Lakhs" {% if data.father_income == '₹10 Lakhs - ₹15 Lakhs' %}selected{% endif %}>
+                                        ₹10 Lakhs - ₹15 Lakhs</option>
+                                    <option value="Above ₹15 Lakhs" {% if data.father_income == 'Above ₹15 Lakhs' %}selected{% endif %}>
+                                        Above ₹15 Lakhs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-md mb-3" style="color: #168e6a;">Mother's Details</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="form-label block mb-2">Mother's Name <span
+                                        class="text-red-500"></span></label>
+                                <input type="text" name="mother_name" value="{{ data.mother_name }}"
+                                    placeholder="Full name" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div>
+                                <label class="form-label block mb-2">Occupation</label>
+                                <input type="text" name="mother_occupation" value="{{ data.mother_occupation }}"
+                                    placeholder="Occupation" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div>
+                                <label class="form-label block mb-2">Mobile Number</label>
+                                <input type="tel" name="mother_mobile" value="{{ data.mother_mobile }}"
+                                    placeholder="10-digit mobile number"
+                                    class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                            <div>
+                                <label class="form-label block mb-2">Email</label>
+                                <input type="email" name="mother_email" value="{{ data.mother_email }}"
+                                    placeholder="Email address" class="form-input w-full px-4 py-3 rounded-xl bg-white">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 p-4 rounded-xl" style="background: #fbb03b10; border: 1px solid #fbb03b30;">
+                    <label class="flex items-start cursor-pointer">
+                        <input type="checkbox" name="declaration_confirmed" value="true" required class="mt-1 mr-3 w-5 h-5"
+                            style="accent-color: #168e6a;" {% if data.declaration_confirmed == 'true' %}checked{% endif %}>
+                        <span class="text-sm" style="color: #292d32;">
+                            I hereby declare that all the information provided above is true and correct to the best
+                            of my knowledge.
+                            I understand that providing false information may result in cancellation of admission.
+                        </span>
+                    </label>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8">
+                    <button type="submit" class="px-8 py-3 rounded-full font-semibold text-white transition-all"
+                        style="background: linear-gradient(135deg, #168e6a, #0f6b4f);">
+                        Save & Continue
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
