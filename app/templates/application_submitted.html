@@ -7,8 +7,8 @@
 <main class="pb-12">
     <section class="bg-gradient-to-br from-[#f8fafc] to-[#f0f4f8] border-b border-[rgba(22,142,106,0.1)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2" style="color: #292d32;">Application Confirmation</h1>
-            <p class="text-lg" style="color: #b4b6b7;">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#292d32]">Application Confirmation</h1>
+            <p class="text-lg text-[#b4b6b7]">
                 {{ application.school.school_name }}, {{ application.school.city }} - Admission Form 2026-27</p>
         </div>
     </section>
@@ -19,14 +19,14 @@
                     class="step-completed w-10 h-10 rounded-full flex items-center justify-center font-bold bg-[#168e6a] text-white">
                     <i class="fas fa-check"></i>
                 </div>
-                <div class="flex-1 h-1 mx-2" style="background: #168e6a;"></div>
+                <div class="flex-1 h-1 mx-2 bg-[#168e6a]"></div>
             </div>
             <div class="flex items-center flex-1">
                 <div
                     class="step-completed w-10 h-10 rounded-full flex items-center justify-center font-bold bg-[#168e6a] text-white">
                     <i class="fas fa-check"></i>
                 </div>
-                <div class="flex-1 h-1 mx-2" style="background: #168e6a;"></div>
+                <div class="flex-1 h-1 mx-2 bg-[#168e6a]"></div>
             </div>
             <div class="flex items-center">
                 <div
@@ -36,39 +36,34 @@
             </div>
         </div>
         <div class="flex justify-between text-sm px-2 mb-8">
-            <span style="color: #168e6a;"><i class="fas fa-check mr-1"></i>Student Details</span>
-            <span style="color: #168e6a;"><i class="fas fa-check mr-1"></i>Review</span>
-            <span class="font-semibold" style="color: #168e6a;">Confirmation</span>
+            <span class="text-[#168e6a]"><i class="fas fa-check mr-1"></i>Student Details</span>
+            <span class="text-[#168e6a]"><i class="fas fa-check mr-1"></i>Review</span>
+            <span class="font-semibold text-[#168e6a]">Confirmation</span>
         </div>
     </div>
     <div class="max-w-xl mx-auto px-4 sm:px-6">
         <div class="bg-white rounded-3xl shadow-lg p-10 text-center">
-            <div class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style="background: #168e6a;">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center bg-[#168e6a]">
                 <i class="fas fa-check text-white text-3xl"></i>
             </div>
-            <h2 class="text-2xl font-bold mb-2" style="color:#292d32;">
+            <h2 class="text-2xl font-bold mb-2 text-[#292d32]">
                 Application Successfully Submitted
             </h2>
             <div class="mb-3">
-                <span class="text-lg" style="color: #b4b6b7;">Application ID: </span>
-                <span class="text-lg font-semibold" style="color: #168e6a;">{{ application.application_no }}</span>
+                <span class="text-lg text-[#b4b6b7]">Application ID: </span>
+                <span class="text-lg font-semibold text-[#168e6a]">{{ application.application_no }}</span>
             </div>
-            <p class="text-sm leading-relaxed" style="color:#b4b6b7;">
+            <p class="text-sm leading-relaxed text-[#b4b6b7]">
                 We will inform you about the next steps. Please keep your Tracking ID safe and use it to track your
                 application status on the Track Status page.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-3 mt-8">
                 <a href="{% url 'track_status' %}"
-                    class="px-6 py-2.5 rounded-full font-semibold text-white text-sm transition-all"
-                    style="background: linear-gradient(135deg, #168e6a, #0f6b4f);">
+                    class="px-6 py-2.5 rounded-full font-semibold text-white text-sm transition-all bg-gradient-to-br from-[#168e6a] to-[#0f6b4f]">
                     <i class="fas fa-chart-line mr-2"></i>Track Status
                 </a>
                 <a href="{% url 'home' %}"
-                    class="px-6 py-2.5 rounded-full font-semibold border-2 text-sm transition-all"
-                    style="border-color: #168e6a; color: #168e6a;"
-                    onmouseover="this.style.background='#168e6a'; this.style.color='white'"
-                    onmouseout="this.style.background='transparent'; this.style.color='#168e6a'">
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border-2 border-[#168e6a] text-[#168e6a] hover:bg-[#168e6a] hover:text-white">
                     <i class="fas fa-home mr-2"></i>Back to Home
                 </a>
             </div>

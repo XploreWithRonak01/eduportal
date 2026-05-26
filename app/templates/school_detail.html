@@ -13,7 +13,7 @@
 <main>
     <div class="bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-            <div class="flex items-center text-sm" style="color: #b4b6b7;">
+            <div class="flex items-center text-sm text-[#b4b6b7]">
                 <a href="{% url 'home' %}" class="hover:text-[#168e6a] transition">Home</a>
                 <i class="fas fa-chevron-right mx-2 text-xs"></i>
                 <a href="{% url 'school_list' %}" class="hover:text-[#168e6a] transition">Schools</a>
@@ -26,14 +26,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-bold mb-2" style="color: #292d32;">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#292d32]">
                         {{ school.school_name}}
                     </h1>
                     <div class="flex flex-wrap items-center gap-4">
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold"
-                            style="background: #168e6a; color: white;">{{ school.board }}</span>
-                        <span class="flex items-center text-sm" style="color: #b4b6b7;">
-                            <i class="fas fa-calendar-alt mr-1" style="color: #168e6a;"></i> Est.
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#168e6a] text-white">
+                            {{ school.board }}</span>
+                        <span class="flex items-center text-sm text-[#b4b6b7]">
+                            <i class="fas fa-calendar-alt mr-1 text-[#168e6a]"></i> Est.
                             {{ school.established_year }}
                         </span>
                     </div>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-xl mb-4" style="color: #292d32;">Key Highlights</h3>
+                    <h3 class="font-bold text-xl mb-4 text-[#292d32]">Key Highlights</h3>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         {% for facility in school.facilities.all|slice:":9" %}
                         <span class="facility-badge px-3 py-2 rounded-lg text-sm font-medium text-center">
@@ -250,22 +250,21 @@
             </div>
         </div>
     </div>
-    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl border-t-2 z-40" style="border-color: #168e6a;">
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl border-t-2 z-40 bg-[#168e6a]"">
         <div class="max-w-7xl mx-auto px-4 py-2.5 sm:px-6 sm:py-4">
             <div class="flex items-center justify-between gap-3">
                 <div class="min-w-0 flex-1">
-                    <h4 class="font-bold text-sm sm:text-lg truncate" style="color: #292d32;">
+                    <h4 class="font-bold text-sm sm:text-lg truncate text-[#292d32]"">
                         Delhi Public School, Udaipur
                     </h4>
-                    <p class="text-xs sm:text-sm truncate" style="color: #b4b6b7;">
+                    <p class="text-xs sm:text-sm truncate text-[#b4b6b7]">
                         <span class="sm:hidden">Limited seats for 2026-27</span>
                         <span class="hidden sm:inline">Limited seats available for 2026-27</span>
                     </p>
                 </div>
                 <a href="{% url 'apply_now' school.slug %}" class="flex-shrink-0">
                     <button
-                        class="px-5 py-2 sm:px-8 sm:py-3 rounded-full font-semibold text-white text-sm sm:text-lg whitespace-nowrap transition-all hover:scale-105 active:scale-95"
-                        style="background: linear-gradient(135deg, #168e6a, #0f6b4f);">
+                        class="px-5 py-2 sm:px-8 sm:py-3 rounded-full font-semibold text-white text-sm sm:text-lg whitespace-nowrap transition-all hover:scale-105 active:scale-95 bg-gradient-to-br from-[#168e6a] to-[#0f6b4f]">
                         Apply Now <i class="fas fa-arrow-right ml-1.5 sm:ml-2"></i>
                     </button>
                 </a>

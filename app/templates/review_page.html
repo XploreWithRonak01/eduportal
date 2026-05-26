@@ -13,7 +13,7 @@
 <main class="pb-12">
     <div class="bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-            <div class="flex items-center text-sm" style="color: #b4b6b7;">
+            <div class="flex items-center text-sm text-[#b4b6b7]">
                 <a href="{% url 'home' %}" class="hover:text-[#168e6a] transition">Home</a>
                 <i class="fas fa-chevron-right mx-2 text-xs"></i>
                 <a href="{% url 'school_list' %}" class="hover:text-[#168e6a] transition">Schools</a>
@@ -29,8 +29,8 @@
     </div>
     <section class="bg-gradient-to-br from-[#f8fafc] to-[#f0f4f8] border-b border-[rgba(22,142,106,0.1)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2" style="color: #292d32;">Review Your Application</h1>
-            <p class="text-lg" style="color: #b4b6b7;">{{ school.school_name }}, {{ school.city }} - Admission Form
+            <h1 class="text-3xl md:text-4xl font-bold mb-2 text-[#292d32]">Review Your Application</h1>
+            <p class="text-lg text-[#b4b6b7]">{{ school.school_name }}, {{ school.city }} - Admission Form
                 2026-27</p>
         </div>
     </section>
@@ -40,7 +40,7 @@
                 <div class="step-completed w-10 h-10 rounded-full flex items-center justify-center font-bold">
                     <i class="fas fa-check"></i>
                 </div>
-                <div class="flex-1 h-1 mx-2" style="background: #168e6a;"></div>
+                <div class="flex-1 h-1 mx-2 bg-[#168e6a]"></div>
             </div>
             <div class="flex items-center flex-1">
                 <div class="step-active w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
@@ -53,9 +53,9 @@
             </div>
         </div>
         <div class="flex justify-between text-sm px-2 mb-8">
-            <span style="color: #168e6a;"><i class="fas fa-check mr-1"></i>Student Details</span>
-            <span class="font-semibold" style="color: #168e6a;">Review</span>
-            <span style="color: #b4b6b7;">Confirmation</span>
+            <span class="text-[#168e6a]"><i class="fas fa-check mr-1"></i>Student Details</span>
+            <span class="font-semibold bg-[#168e6a]">Review</span>
+            <span class="text-[#b4b6b7]">Confirmation</span>
         </div>
     </div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -64,15 +64,15 @@
                 <img src="https://www.feeltheudaipur.com/wp-content/uploads/2020/03/dps-udaipur-udaipurian.jpg"
                     class="w-16 h-16 rounded-xl object-cover" alt="School">
                 <div>
-                    <h3 class="font-bold text-lg" style="color: #292d32;">Delhi Public School, Udaipur</h3>
-                    <p class="text-sm" style="color: #b4b6b7;">CBSE Board | Nursery - 12th | Est. 2007</p>
+                    <h3 class="font-bold text-lg text-[#292d32]">Delhi Public School, Udaipur</h3>
+                    <p class="text-sm text-[#b4b6b7]">CBSE Board | Nursery - 12th | Est. 2007</p>
                 </div>
             </div>
         </div>
         <div class="review-card bg-white rounded-2xl p-6 mb-4">
             <div class="flex justify-between items-start mb-4">
-                <h3 class="font-bold text-lg flex items-center" style="color: #292d32;">
-                    <i class="fas fa-user-graduate mr-2" style="color: #168e6a;"></i>Student Information
+                <h3 class="font-bold text-lg flex items-center text-[#292d32]">
+                    <i class="fas fa-user-graduate mr-2 text-[#168e6a]"></i>Student Information
                 </h3>
                 <a href="{% url 'apply_now' school.slug %}"
                     class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border border-[#168e6a] text-[#168e6a] transition-all duration-300 hover:bg-[#168e6a] hover:text-white">
@@ -82,48 +82,48 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Full Name</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.student_name }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Full Name</p>
+                    <p class="font-medium text-[#292d32]">{{ data.student_name }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Date of Birth</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.date_of_birth }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Date of Birth</p>
+                    <p class="font-medium text-[#292d32]">{{ data.date_of_birth }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Gender</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.gender }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Gender</p>
+                    <p class="font-medium text-[#292d32]">{{ data.gender }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Blood Group</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.blood_group }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Blood Group</p>
+                    <p class="font-medium text-[#292d32]">{{ data.blood_group }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Applying for Class</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.apply_class }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Applying for Class</p>
+                    <p class="font-medium text-[#292d32]">{{ data.apply_class }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Aadhar Number</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.aadhar_number }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Aadhar Number</p>
+                    <p class="font-medium text-[#292d32]">{{ data.aadhar_number }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Religion</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.religion }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Religion</p>
+                    <p class="font-medium text-[#292d32]">{{ data.religion }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Category</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.cast_category }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Category</p>
+                    <p class="font-medium text-[#292d32]">{{ data.cast_category }}</p>
                 </div>
                 <div class="md:col-span-2">
-                    <p class="text-xs" style="color: #b4b6b7;">Residential Address</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.address }}, {{ data.city }}, {{ data.state }}
+                    <p class="text-xs text-[#b4b6b7]">Residential Address</p>
+                    <p class="font-medium text-[#292d32]">{{ data.address }}, {{ data.city }}, {{ data.state }}
                         - {{ data.pin_code }}</p>
                 </div>
             </div>
         </div>
         <div class="review-card bg-white rounded-2xl p-6 mb-4">
             <div class="flex justify-between items-start mb-4">
-                <h3 class="font-bold text-lg flex items-center" style="color: #292d32;">
-                    <i class="fas fa-users mr-2" style="color: #168e6a;"></i>Parent/Guardian Information
+                <h3 class="font-bold text-lg flex items-center text-[#292d32]">
+                    <i class="fas fa-users mr-2 text-[#168e6a]"></i>Parent/Guardian Information
                 </h3>
                 <a href="{% url 'apply_now' school.slug %}"
                     class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border border-[#168e6a] text-[#168e6a] transition-all duration-300 hover:bg-[#168e6a] hover:text-white">
@@ -132,56 +132,56 @@
                 </a>
             </div>
             <div class="mb-4 pb-4 border-b border-gray-100">
-                <h4 class="font-semibold text-sm mb-3" style="color: #168e6a;">Father's Details</h4>
+                <h4 class="font-semibold text-sm mb-3 text-[#168e6a]">Father's Details</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Father's Name</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.father_name }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Father's Name</p>
+                        <p class="font-medium text-[#292d32]">{{ data.father_name }}</p>
                     </div>
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Occupation</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.father_occupation }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Occupation</p>
+                        <p class="font-medium text-[#292d32]">{{ data.father_occupation }}</p>
                     </div>
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Mobile Number</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.father_mobile }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Mobile Number</p>
+                        <p class="font-medium text-[#292d32]">{{ data.father_mobile }}</p>
                     </div>
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Email</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.father_email }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Email</p>
+                        <p class="font-medium text-[#292d32]">{{ data.father_email }}</p>
                     </div>
                     <div class="md:col-span-2">
-                        <p class="text-xs" style="color: #b4b6b7;">Annual Income</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.father_income }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Annual Income</p>
+                        <p class="font-medium text-[#292d32]">{{ data.father_income }}</p>
                     </div>
                 </div>
             </div>
             <div>
-                <h4 class="font-semibold text-sm mb-3" style="color: #168e6a;">Mother's Details</h4>
+                <h4 class="font-semibold text-sm mb-3 text-[#168e6a]">Mother's Details</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Mother's Name</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.mother_name }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Mother's Name</p>
+                        <p class="font-medium text-[#292d32]">{{ data.mother_name }}</p>
                     </div>
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Occupation</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.mother_occupation }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Occupation</p>
+                        <p class="font-medium text-[#292d32]">{{ data.mother_occupation }}</p>
                     </div>
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Mobile Number</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.mother_mobile }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Mobile Number</p>
+                        <p class="font-medium text-[#292d32]">{{ data.mother_mobile }}</p>
                     </div>
                     <div>
-                        <p class="text-xs" style="color: #b4b6b7;">Email</p>
-                        <p class="font-medium" style="color: #292d32;">{{ data.mother_email }}</p>
+                        <p class="text-xs text-[#b4b6b7]">Email</p>
+                        <p class="font-medium text-[#292d32]">{{ data.mother_email }}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="review-card bg-white rounded-2xl p-6 mb-4">
             <div class="flex justify-between items-start mb-4">
-                <h3 class="font-bold text-lg flex items-center" style="color: #292d32;">
-                    <i class="fas fa-school mr-2" style="color: #168e6a;"></i>Previous School Details
+                <h3 class="font-bold text-lg flex items-center text-[#292d32]">
+                    <i class="fas fa-school mr-2 text-[#168e6a]"></i>Previous School Details
                 </h3>
                 <a href="{% url 'apply_now' school.slug %}"
                     class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border border-[#168e6a] text-[#168e6a] transition-all duration-300 hover:bg-[#168e6a] hover:text-white">
@@ -191,20 +191,20 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">School Name</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.previous_school_name }}</p>
+                    <p class="text-xs text-[#b4b6b7]">School Name</p>
+                    <p class="font-medium text-[#292d32]">{{ data.previous_school_name }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Board</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.previous_board }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Board</p>
+                    <p class="font-medium text-[#292d32]">{{ data.previous_board }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Last Class Attended</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.last_class_attended }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Last Class Attended</p>
+                    <p class="font-medium text-[#292d32]">{{ data.last_class_attended }}</p>
                 </div>
                 <div>
-                    <p class="text-xs" style="color: #b4b6b7;">Year of Passing</p>
-                    <p class="font-medium" style="color: #292d32;">{{ data.year_of_passing }}</p>
+                    <p class="text-xs text-[#b4b6b7]">Year of Passing</p>
+                    <p class="font-medium text-[#292d32]">{{ data.year_of_passing }}</p>
                 </div>
             </div>
         </div>
@@ -213,10 +213,10 @@
 
             <div class="bg-white rounded-2xl p-6 mb-6 border border-gray-200">
                 <label class="flex items-start cursor-pointer">
-                    <input type="checkbox" name="declaration_confirmed" value="true" required class="mt-1 mr-3 w-5 h-5"
-                        style="accent-color: #168e6a;">
+                    <input type="checkbox" name="declaration_confirmed" value="true" required
+                        class="mt-1 mr-3 w-5 h-5 accent-[#168e6a]">
 
-                    <span class="text-sm" style="color: #292d32;">
+                    <span class="text-sm text-[#292d32]">
                         I confirm that all the information provided in this application is true and correct to the best
                         of my knowledge.
                         I understand that any false information may lead to cancellation of admission.
@@ -229,8 +229,8 @@
                     <i class="fas fa-arrow-left mr-2"></i>
                     Back to Student Details
                 </a>
-                <button type="submit" class="px-8 py-3 rounded-full font-semibold text-white"
-                    style="background: linear-gradient(135deg, #168e6a, #0f6b4f);">
+                <button type="submit"
+                    class="px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-br from-[#168e6a] to-[#0f6b4f]">
                     Submit Application
                 </button>
             </div>
