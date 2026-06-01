@@ -54,14 +54,14 @@
         </div>
         <div class="flex justify-between text-sm px-2 mb-8">
             <span class="text-[#168e6a]"><i class="fas fa-check mr-1"></i>Student Details</span>
-            <span class="font-semibold bg-[#168e6a]">Review</span>
+            <span class="font-semibold text-[#168e6a]">Review</span>
             <span class="text-[#b4b6b7]">Confirmation</span>
         </div>
     </div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="bg-gradient-to-r from-[#168e6a08] to-[#fbb03b08] p-5 rounded-2xl mb-6 border border-gray-100">
             <div class="flex items-center gap-4">
-                <img src="https://www.feeltheudaipur.com/wp-content/uploads/2020/03/dps-udaipur-udaipurian.jpg"
+                <img src="{{ school.primary_image.url }}"
                     class="w-16 h-16 rounded-xl object-cover" alt="School">
                 <div>
                     <h3 class="font-bold text-lg text-[#292d32]">Delhi Public School, Udaipur</h3>
@@ -69,6 +69,23 @@
                 </div>
             </div>
         </div>
+        {% if errors %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6">
+                {% for field, error_list in errors.items %}
+                    {% for error in error_list %}
+
+                        {% if field == "__all__" %}
+                            <p>{{ error }}</p>
+                        {% else %}
+                            <p>
+                                <strong>{{ field }}</strong> : {{ error }}
+                            </p>
+                        {% endif %}
+
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
         <div class="review-card bg-white rounded-2xl p-6 mb-4">
             <div class="flex justify-between items-start mb-4">
                 <h3 class="font-bold text-lg flex items-center text-[#292d32]">

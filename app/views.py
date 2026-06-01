@@ -169,39 +169,45 @@ def submit_application(request):
             return redirect('home')
         
         school = get_object_or_404(School, id=data['school_id'])
-        application = StudentApplication.objects.create(
-            school=school,
-            student_name=data['student_name'],
-            date_of_birth=data['date_of_birth'],
-            gender=data['gender'],
-            blood_group=data['blood_group'],
-            aadhar_number=data['aadhar_number'],
-            religion=data['religion'],
-            cast_category=data['cast_category'],
-            address=data['address'],
-            city=data['city'],
-            state=data['state'],
-            pin_code=data['pin_code'],
-            apply_class=data['apply_class'],
-            previous_school_name=data['previous_school_name'],
-            previous_board=data['previous_board'],
-            last_class_attended=data['last_class_attended'],
-            year_of_passing=data['year_of_passing'],
-            father_name=data['father_name'],
-            father_occupation=data['father_occupation'],
-            father_mobile=data['father_mobile'],
-            father_email=data['father_email'],
-            father_income=data['father_income'],
-            mother_name=data['mother_name'],
-            mother_occupation=data['mother_occupation'],
-            mother_mobile=data['mother_mobile'],
-            mother_email=data['mother_email'],
-            declaration_confirmed=data['declaration_confirmed']
-        )
-        request.session.pop('application_data', None)
+        try:
+            application = StudentApplication.objects.create(
+                school=school,
+                student_name=data['student_name'],
+                date_of_birth=data['date_of_birth'],
+                gender=data['gender'],
+                blood_group=data['blood_group'],
+                aadhar_number=data['aadhar_number'],
+                religion=data['religion'],
+                cast_category=data['cast_category'],
+                address=data['address'],
+                city=data['city'],
+                state=data['state'],
+                pin_code=data['pin_code'],
+                apply_class=data['apply_class'],
+                previous_school_name=data['previous_school_name'],
+                previous_board=data['previous_board'],
+                last_class_attended=data['last_class_attended'],
+                year_of_passing=data['year_of_passing'],
+                father_name=data['father_name'],
+                father_occupation=data['father_occupation'],
+                father_mobile=data['father_mobile'],
+                father_email=data['father_email'],
+                father_income=data['father_income'],
+                mother_name=data['mother_name'],
+                mother_occupation=data['mother_occupation'],
+                mother_mobile=data['mother_mobile'],
+                mother_email=data['mother_email'],
+                declaration_confirmed=data['declaration_confirmed']
+            )
+            request.session.pop('application_data', None)
 
-        return redirect('application_submitted', application_id=application.id)
-    
+            return redirect('application_submitted', application_id=application.id)
+
+        except ValidationError as e:
+
+            return render(request, 'review_page.html', {'data': data, 'school': school, 'errors': e.message_dict
+            })
+
     return redirect('home')
 
 def sitemap(request):
