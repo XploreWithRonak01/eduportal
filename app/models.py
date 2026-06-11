@@ -18,7 +18,6 @@ aadhar_validator = RegexValidator(
     message='Enter valid 12 digit Aadhar number'
 )
 
-
 # School Model
 class School(models.Model):
 
