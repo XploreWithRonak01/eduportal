@@ -1,6 +1,6 @@
 <header class="glass-nav sticky top-0 z-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex justify-between items-center h-20">
+	<div class="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-center h-20 md:grid md:grid-cols-[1fr_auto_1fr]">
 			<a href="{% url 'home' %}" class="flex items-center space-x-3">
 				<div
 					class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#168e6a] to-[#0f6b4f]">
@@ -11,7 +11,7 @@
 					<span class="font-bold text-2xl text-[#168e6a]">Portal</span>
 				</div>
 			</a>
-			<nav class="hidden md:flex items-center space-x-2">
+			<nav class="hidden md:flex items-center space-x-5 md:justify-self-center">
 				<a href="{% url 'home' %}" class="px-5 py-2.5 rounded-full font-medium 
                     {% if request.resolver_match.url_name == 'home' %}
                         text-white bg-gradient-to-br from-[#168e6a] to-[#0f6b4f] shadow-lg

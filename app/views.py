@@ -58,7 +58,7 @@ def track_status(request):
 
 def school_list(request):
     search = request.GET.get('q')
-    school = School.objects.all()
+    school = School.objects.all().order_by('-established_year')
     if search:
         school = school.filter(
             Q(school_name__icontains=search) |
